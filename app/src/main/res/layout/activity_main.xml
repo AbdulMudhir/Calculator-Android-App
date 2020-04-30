@@ -115,6 +115,7 @@
             android:autoSizeMinTextSize="50sp"
             android:autoSizeMaxTextSize="200sp"
             android:autoSizeStepGranularity="50sp"
+            android:maxLength="13"
             android:textColor="#ffffff"
             android:textSize="150sp"
             android:textStyle="bold"

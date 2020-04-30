@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Script;
+import org.mozilla.javascript.Scriptable;
+
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     private boolean darkMode = false;
     private Button darkModeButton;
+    private TextView calculationView;
 
 
 
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         setContentView(R.layout.activity_main);
 
 
-
+        calculationView = findViewById(R.id.calculationTextView);
 
 
         Button clearButton = findViewById(R.id.clearButton);
@@ -160,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             case R.id.clearButton:{
                 expressionTextView.setText("");
                 decimalPointUsed=false;
+                calculationView.setText("0");
                 break;
             }
 
@@ -179,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                     break;
 
                 }
+                break;
 
             }
 
@@ -306,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                     int pink = Color.parseColor(pinkHex);
 
                     background.setBackgroundColor(Color.parseColor(pinkHex));
-                    darkModeButton.setText("Light");
+                    darkModeButton.setText("Dark");
                     darkMode=false;
                     break;
 
@@ -314,6 +321,57 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
 
                 }
+
+
+            case R.id.equalButton: {
+
+
+
+                // make sure a number was entered beforehand
+                if (currentExpression.length() != 0) {
+                    // check the last string
+                    String lastString = currentExpression.substring(currentExpression.length() - 1);
+
+                    boolean lastCharacterIsAnumber = lastString.matches(numberRegex);
+
+                    if(lastCharacterIsAnumber) {
+
+                        Context rhino = Context.enter();
+
+                        rhino.setOptimizationLevel(-1);
+
+                        Scriptable scriptable = rhino.initSafeStandardObjects();
+
+                        String formattedExpression = currentExpression;
+
+                        if (currentExpression.contains(String.valueOf(division))) {
+
+                            formattedExpression = currentExpression.replace(division, '/');
+                        }
+
+
+                            String calculation = rhino.evaluateString
+                                    (scriptable, formattedExpression, "javascript", 1, null).toString();
+
+                        Double answer = Double.parseDouble(calculation);
+
+                        if(answer % 1 ==0) {
+
+                            Integer answerToInteger = answer.intValue();
+                            calculation = String.valueOf(answerToInteger);
+                        }
+
+                        calculationView.setText(calculation);
+
+
+                            decimalPointUsed = true;
+                        }
+
+
+
+                }
+                break;
+            }
 
 
 
