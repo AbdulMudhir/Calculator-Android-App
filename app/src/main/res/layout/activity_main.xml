@@ -6,17 +6,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:background="#ff9878">
+        android:background="#ff9878" android:id="@+id/background">
     <Button
             android:text="back"
             android:layout_width="100dp"
             android:layout_height="76dp"
-            android:id="@+id/backspaceButotn"
+            android:id="@+id/backspaceButton"
             android:textColor="#ff4105"
             android:textSize="30sp"
             android:background="@drawable/button_selector"
             app:layout_constraintStart_toEndOf="@+id/clearButton" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/divisableButton" app:layout_constraintTop_toTopOf="@+id/clearButton"
+            app:layout_constraintEnd_toStartOf="@+id/divisableButton"
+            app:layout_constraintTop_toTopOf="@+id/clearButton"
             app:layout_constraintBottom_toBottomOf="@+id/clearButton"/>
     <Button
             android:text="C"
@@ -27,7 +28,7 @@
             android:textSize="30sp"
             android:background="@drawable/button_selector"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/backspaceButotn"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/backspaceButton"
             app:layout_constraintBottom_toTopOf="@+id/number7"/>
     <Button
             android:text="%"
@@ -37,9 +38,10 @@
             android:textColor="#ff4105"
             android:textSize="30sp"
             android:background="@drawable/button_selector"
-            app:layout_constraintStart_toEndOf="@+id/backspaceButotn" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/divisonButton" app:layout_constraintTop_toTopOf="@+id/backspaceButotn"
-            app:layout_constraintBottom_toBottomOf="@+id/backspaceButotn"/>
+            app:layout_constraintStart_toEndOf="@+id/backspaceButton" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/divisonButton"
+            app:layout_constraintTop_toTopOf="@+id/backspaceButton"
+            app:layout_constraintBottom_toBottomOf="@+id/backspaceButton"/>
     <Button
             android:text="÷"
             android:layout_width="100dp"
