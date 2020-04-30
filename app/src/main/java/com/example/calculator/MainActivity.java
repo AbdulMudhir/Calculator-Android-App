@@ -18,6 +18,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+        Button clearButton = (Button) findViewById(R.id.clearButton);
+
+
 
 
     }
